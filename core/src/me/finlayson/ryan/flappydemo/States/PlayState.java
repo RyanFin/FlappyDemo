@@ -1,5 +1,6 @@
 package me.finlayson.ryan.flappydemo.States;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -17,7 +18,10 @@ public class PlayState extends State {
     public PlayState(GameStateManager gsm) {
         super(gsm);
         bird = new Bird(50,300);
+        //start from bottom-left origin spot, size of viewport
         cam.setToOrtho(false, MyGdxGame.WIDTH/2, MyGdxGame.HEIGHT/2);
+        //resize(MyGdxGame.WIDTH*2, MyGdxGame.HEIGHT*2);
+        //resize(Gdx.graphics.getWidth()*2, Gdx.graphics.getHeight()*2);
     }
 
     @Override

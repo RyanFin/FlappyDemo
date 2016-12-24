@@ -19,7 +19,6 @@ public class MenuState extends State {
         super(gsm);
         background = new Texture("bg.png");
         playBtn = new Texture("playbtn.png");
-        //cam.setToOrtho(false, MyGdxGame.WIDTH/2,MyGdxGame.HEIGHT/2); //start from bottom-left origin spot, size of viewport
 
     }
 
