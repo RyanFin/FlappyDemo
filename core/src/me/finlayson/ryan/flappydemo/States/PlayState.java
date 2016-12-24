@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import me.finlayson.ryan.flappydemo.MyGdxGame;
 import me.finlayson.ryan.flappydemo.Sprites.Bird;
+import me.finlayson.ryan.flappydemo.Sprites.Tube;
 
 /**
  * Created by user on 24/12/2016.
@@ -15,6 +16,7 @@ public class PlayState extends State {
 
     private Bird bird;
     private Texture bg;
+    private Tube tube;
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
@@ -25,6 +27,7 @@ public class PlayState extends State {
         //resize(Gdx.graphics.getWidth()*2, Gdx.graphics.getHeight()*2);
 
         bg = new Texture("bg.png");
+        tube = new Tube(100);
     }
 
     @Override
@@ -48,6 +51,8 @@ public class PlayState extends State {
         sb.begin();
         sb.draw(bg, cam.position.x - (cam.viewportWidth/2), 0);
         sb.draw(bird.getTexture(), bird.getPosition().x, bird.getPosition().y);
+        sb.draw(tube.getTopTube(), tube.getPosTopTube().x, tube.getPosTopTube().y);
+        sb.draw(tube.getBottomTube(), tube.getPosBotTube().x, tube.getPosBotTube().y);
         sb.end();
     }
 
