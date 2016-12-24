@@ -14,6 +14,7 @@ import me.finlayson.ryan.flappydemo.Sprites.Bird;
 public class PlayState extends State {
 
     private Bird bird;
+    private Texture bg;
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
@@ -22,10 +23,15 @@ public class PlayState extends State {
         cam.setToOrtho(false, MyGdxGame.WIDTH/2, MyGdxGame.HEIGHT/2);
         //resize(MyGdxGame.WIDTH*2, MyGdxGame.HEIGHT*2);
         //resize(Gdx.graphics.getWidth()*2, Gdx.graphics.getHeight()*2);
+
+        bg = new Texture("bg.png");
     }
 
     @Override
     public void handleInput() {
+        if(Gdx.input.justTouched()){
+            bird.jump();
+        }
 
     }
 
@@ -40,6 +46,7 @@ public class PlayState extends State {
     public void render(SpriteBatch sb) {
         sb.setProjectionMatrix(cam.combined);
         sb.begin();
+        sb.draw(bg, cam.position.x - (cam.viewportWidth/2), 0);
         sb.draw(bird.getTexture(), bird.getPosition().x, bird.getPosition().y);
         sb.end();
     }
