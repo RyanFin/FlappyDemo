@@ -41,8 +41,11 @@ public class MenuState extends State {
     public void render(SpriteBatch sb) {
         //sb.setProjectionMatrix(cam.combined); //set the viewport
         sb.begin();
-        sb.draw(background, 0, 0, MyGdxGame.WIDTH, MyGdxGame.HEIGHT);
-        sb.draw(playBtn, (MyGdxGame.WIDTH/2) - (playBtn.getWidth()/2), MyGdxGame.HEIGHT/2);
+        //sb.draw(background, 0, 0, MyGdxGame.WIDTH, MyGdxGame.HEIGHT);
+        sb.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        //sb.draw(playBtn, (MyGdxGame.WIDTH/2) - (playBtn.getWidth()/2), MyGdxGame.HEIGHT/2);
+        sb.draw(playBtn, (Gdx.graphics.getWidth()/2) - (playBtn.getWidth()/2), Gdx.graphics.getHeight()/2);
+        //playBtn.getWidth()*2,playBtn.getHeight()*2 add extra width and height parameters to draw method
         sb.end();
     }
 
