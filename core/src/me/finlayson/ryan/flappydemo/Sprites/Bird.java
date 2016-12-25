@@ -61,4 +61,8 @@ public class Bird {
         return bounds;
     }
 
+    public void dispose(){
+        birdTexture.dispose();
+    }
+
 }

@@ -28,7 +28,7 @@ public class GameStateManager {
 
     //pop off top stack and add new stack (2 in 1!)
     public void set(State state){
-        states.pop();
+        states.pop().dispose();
         states.push(state);
     }
 
