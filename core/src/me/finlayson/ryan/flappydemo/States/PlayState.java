@@ -76,6 +76,9 @@ public class PlayState extends State {
             }
         }
 
+        if(bird.getPosition().y <= ground.getHeight() + GROUND_Y_OFFSET){
+            gsm.set(new PlayState(gsm));
+        }
         cam.update();
 
     }
@@ -99,6 +102,7 @@ public class PlayState extends State {
     public void dispose() {
         bg.dispose();
         bird.dispose();
+        ground.dispose();
         for (Tube tube : tubes){
             tube.dispose();
         }
