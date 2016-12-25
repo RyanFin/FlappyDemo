@@ -23,7 +23,7 @@ public class GameStateManager {
 
     //pop a state off the top of the State stack
     public void pop(){
-        states.pop();
+        states.pop().dispose();
     }
 
     //pop off top stack and add new stack (2 in 1!)
