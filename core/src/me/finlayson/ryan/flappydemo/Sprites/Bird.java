@@ -1,6 +1,7 @@
 package me.finlayson.ryan.flappydemo.Sprites;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 
@@ -16,18 +17,22 @@ public class Bird {
     private Vector3 position;
     private Vector3 velocity;
 
-    private Texture birdTexture;
+    private Texture texture;
 
     private Rectangle bounds;
+    private Animation birdAnimation;
 
     public Bird(int x, int y){
         position = new Vector3(x,y,0); //(x,y,z)
         velocity = new Vector3(0,0,0);
-        birdTexture = new Texture("bird.png");
-        bounds = new Rectangle(x,y,birdTexture.getWidth(),birdTexture.getHeight());
+        //display bird animation rather than a single bird image
+        texture = new Texture("birdanimation.png");
+        birdAnimation = new Animation(new TextureRegion(texture), 3, 0.5f);
+        bounds = new Rectangle(x,y,texture.getWidth() / 3, texture.getHeight());
     }
 
     public void update(float dt){
+        birdAnimation.update(dt);
         if(position.y > 0){
             velocity.add(0,GRAVITY,0);
         }
@@ -44,8 +49,8 @@ public class Bird {
         bounds.setPosition(position.x, position.y);
     }
 
-    public Texture getTexture() {
-        return birdTexture;
+    public TextureRegion getTexture() {
+        return birdAnimation.getFrame();
     }
 
 
@@ -62,7 +67,7 @@ public class Bird {
     }
 
     public void dispose(){
-        birdTexture.dispose();
+        texture.dispose();
     }
 
 }

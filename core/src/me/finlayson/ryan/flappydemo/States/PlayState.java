@@ -1,8 +1,11 @@
 package me.finlayson.ryan.flappydemo.States;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
@@ -18,11 +21,21 @@ public class PlayState extends State {
     private static final int TUBE_SPACING = 125;
     private static final int TUBE_COUNT = 4;
     private static final int GROUND_Y_OFFSET = -50;
+    public static int score = 0;
+    //convert int score to a String
+    private String cs = String.valueOf(score);
+    private CharSequence str = cs;
+
 
     private Bird bird;
     private Texture bg;
     private Texture ground;
     private Vector2 groundPos1, groundPos2;
+    /*
+    private FreeTypeFontGenerator generator ;
+    private FreeTypeFontGenerator.FreeTypeFontParameter parameter ;
+    private BitmapFont font12 = generator.generateFont(parameter);*/
+
 
 
     private Array<Tube> tubes;
@@ -34,6 +47,13 @@ public class PlayState extends State {
         cam.setToOrtho(false, MyGdxGame.WIDTH/2, MyGdxGame.HEIGHT/2);
         //resize(MyGdxGame.WIDTH*2, MyGdxGame.HEIGHT*2);
         //resize(Gdx.graphics.getWidth()*2, Gdx.graphics.getHeight()*2);
+
+       /*//initialise font
+        generator = new FreeTypeFontGenerator(Gdx.files.internal("Computerfont.ttf"));
+        parameter =new FreeTypeFontGenerator.FreeTypeFontParameter();
+        parameter.size = 12;*/
+
+
 
         bg = new Texture("bg.png");
         ground = new Texture("ground.png");
@@ -93,6 +113,8 @@ public class PlayState extends State {
             sb.draw(tube.getTopTube(), tube.getPosTopTube().x, tube.getPosTopTube().y);
             sb.draw(tube.getBottomTube(), tube.getPosBotTube().x, tube.getPosBotTube().y);
         }
+        /*font12.setColor(Color.GOLD);
+        font12.draw(sb, str, 3,3);*/
         sb.draw(ground, groundPos1.x, groundPos1.y);
         sb.draw(ground, groundPos2.x, groundPos2.y);
         sb.end();
@@ -102,6 +124,7 @@ public class PlayState extends State {
     public void dispose() {
         bg.dispose();
         bird.dispose();
+        //generator.dispose();
         ground.dispose();
         for (Tube tube : tubes){
             tube.dispose();
